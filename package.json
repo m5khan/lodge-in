@@ -1,0 +1,40 @@
+{
+  "name": "lodge-in",
+  "version": "1.0.0",
+  "description": "Simple client/service application to search for near by hotel based on Node.js and React.",
+  "main": "src/index.ts",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^13.9.1",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack:dev": "webpack --config webpack.config.ts --mode development --watch",
+    "webpack": "webpack --config webpack.config.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m5khan/lodge-in.git"
+  },
+  "keywords": [
+    "javascript",
+    "typescript",
+    "node.js",
+    "express.js",
+    "webpack",
+    "docker",
+    "REST",
+    "react"
+  ],
+  "author": "Shoaib Khan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/m5khan/lodge-in/issues"
+  },
+  "homepage": "https://github.com/m5khan/lodge-in#readme"
+}
