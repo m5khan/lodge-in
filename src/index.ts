@@ -1,12 +1,26 @@
+import {Provider} from './providers';
+import {Container, Service} from 'typedi';
 
-class Application {
+
+@Service()
+class Application implements Provider {
 
     constructor() {
-        console.log("hello world");
+        
+    }
+
+    async bootstrap(): Promise<void> {
+
+    }
+
+    async shutdown(): Promise<void> {
+
     }
 
 }
 
 (async () => {
-    return new Application();
+    const app = Container.get<Provider>(Application);
+    console.log('Bootstrapping Application');
+    app.bootstrap();
 })();
