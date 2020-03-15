@@ -2,13 +2,13 @@ import { Service } from 'typedi';
 import { Provider } from '.';
 
 @Service()
-class PersistanceProvider implements Provider {
+export class PersistenceProvider implements Provider {
     
-    async bootstrap(): Promise<void> {
+    public async bootstrap(): Promise<void> {
 
     }
 
-    async shutdown(): Promise<void> {
+    public async shutdown(): Promise<void> {
 
     }
     

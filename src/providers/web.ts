@@ -3,13 +3,13 @@ import express from 'express';
 import { Provider } from '.';
 
 @Service()
-class WebProvider implements Provider {
+export class WebProvider implements Provider {
     
-    async bootstrap(): Promise<void> {
-
+    public async bootstrap(): Promise<void> {
+        console.log(process.env.PORT);
     }
 
-    async shutdown(): Promise<void> {
+    public async shutdown(): Promise<void> {
 
     }
     
