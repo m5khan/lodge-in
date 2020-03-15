@@ -6,7 +6,16 @@ import { PersistenceProvider } from './providers/persistence';
 import dotenv from 'dotenv';
 dotenv.config();
 
-
+/**
+ * Application Bootstrap
+ * Get the service providers and run all the services
+ * i.e. run persistance services and start the web server
+ * 
+ * The application uses typedi for dependency injection
+ * 
+ * todo: implement controllers and ORM from typestack
+ * https://github.com/typestack
+ */
 @Service()
 class Application implements Provider {
     private services: Provider[];

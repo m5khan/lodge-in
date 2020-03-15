@@ -4,6 +4,9 @@ import { MongoService } from '../services/mongoService';
 
 /**
  * Initialize all the services on persistance layer
+ * 
+ * Add other persistence providers here
+ * for example: redis, graph database etc
  */
 @Service()
 export class PersistenceProvider implements Provider {

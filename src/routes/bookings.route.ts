@@ -2,6 +2,10 @@ import express from 'express';
 import { Service } from 'typedi';
 import { BookingController } from '../controllers/bookingController';
 
+
+/**
+ * Route handler for /booking related calls
+ */
 @Service()
 export class BookingRoute {
     

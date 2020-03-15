@@ -2,6 +2,9 @@ import express from 'express';
 import { Service } from 'typedi';
 import { PropertyController } from '../controllers/propertyController';
 
+/**
+ * Route handler for /properties related calls
+ */
 @Service()
 export class PropertyRoute {
     

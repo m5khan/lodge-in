@@ -7,6 +7,10 @@ import { Provider } from '.';
 import { PropertyRoute } from '../routes/properties.route';
 import { BookingRoute } from '../routes/bookings.route';
 
+/**
+ * Configure and starts the node http server
+ */
+
 @Service()
 export class WebProvider implements Provider {
 

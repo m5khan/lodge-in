@@ -2,7 +2,7 @@ import https from 'https';
 import { Service } from 'typedi';
 
 /**
-* Remote service provide http requests to call to make requests to remote servers
+* Remote service provide https requests call to make requests to remote servers
 */
 @Service()
 export class RemoteService {

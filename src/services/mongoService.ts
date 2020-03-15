@@ -1,18 +1,21 @@
 import { Service } from 'typedi';
-import { MongoClient, Collection, InsertWriteOpResult, Db, ObjectID } from "mongodb";
+import { MongoClient, Collection, Db } from "mongodb";
 import { Provider } from '../providers';
 import { DataPersistance } from '.';
 
 @Service()
 export class MongoService implements Provider, DataPersistance {
 
-    private dbUrl: string;
-    private dbName: string;
     private collectionName: string = "bookings";
 
-    constructor() {
-        this.dbUrl = process.env.MONGO_URI as string;
-        this.dbName = process.env.DBNAME as string;
+    constructor() { }
+
+    private get dbUrl(): string {
+        return process.env.MONGO_URI as string;
+    } 
+
+    private get dbName(): string {
+        return process.env.DBNAME as string;
     }
     
     async bootstrap(): Promise<void> {
@@ -36,6 +39,15 @@ export class MongoService implements Provider, DataPersistance {
         client.close();
     }
 
+    /**
+     * Open mongodb connection and provide collection and client
+     * this simplify the boilerplate code for each query to the database
+     * 
+     * usage: use the collection to query the database and close the 
+     * connection from client after
+     * 
+     * @returns Promise with client and collection
+     */
     private async getCollection (): Promise<ICollection> {
         const client: MongoClient = await this.openConnection();
         const db: Db = client.db(this.dbName);
@@ -54,6 +66,11 @@ export class MongoService implements Provider, DataPersistance {
         } as ICollection
     }
 
+    /**
+     * Add booking information to the mongodb collection
+     * 
+     * @param doc booking information in json
+     */
     public async addBooking(doc: any): Promise<string> {
         const { client, collection } = await this.getCollection();
         const insertedDoc = await collection.insertOne(doc);
@@ -62,6 +79,12 @@ export class MongoService implements Provider, DataPersistance {
     }
 
 
+    /**
+     * Query mongodb collection and returns the booking information
+     * against provided property id
+     * 
+     * @param propId here map location id
+     */
     public async getBookings(propId: string): Promise<any[]> {
         const { client, collection } = await this.getCollection();
         const result = await collection.find({

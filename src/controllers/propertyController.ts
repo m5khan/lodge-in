@@ -4,6 +4,8 @@ import { HereLocationService } from '../services/hereLocationService';
 import { MongoService } from '../services/mongoService';
 
 /**
+ * Controller for /properties routes
+ * 
  * TODO: User typedi controller
  * https://github.com/typestack/routing-controllers
  */
@@ -14,11 +16,18 @@ export class PropertyController {
         private hereLocationService: HereLocationService,
         private mongoService: MongoService
         ) { 
-            // Either bind this to the functions or use arrow functions
+            // Either bind `this` to the functions or use arrow functions
             this.getProperties = this.getProperties.bind(this);
             this.getPropertyBooking = this.getPropertyBooking.bind(this);
         }
         
+        /**
+         * Get properties from the "here location" api service
+         *  at the provided latitude and longitude
+         * 
+         * @param req 
+         * @param res 
+         */
         public async getProperties(req: express.Request, res: express.Response) {
             const location: string = req.query['at'];
             let data = null;
@@ -32,6 +41,13 @@ export class PropertyController {
             res.json(data);
         }
         
+        /**
+         * Get the booking information against the property id from the database
+         * and return it to the client
+         * 
+         * @param req 
+         * @param res 
+         */
         public async getPropertyBooking(req: express.Request, res: express.Response) {
             const propId: string = req.params['id'];
             if (propId) {

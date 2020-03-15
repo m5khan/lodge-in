@@ -11,16 +11,35 @@ export class HereLocationService implements Location {
         
     }
     
+    /**
+     * Get hotels in munich
+     */
     async getHotels(): Promise<any> {
         const url = this.getApi('48.135124', '11.581981', 'hotel');
         return this.remoteService.get(url);
     }
 
+    /**
+     * get the locations with name property in their name
+     * from here location search api
+     * 
+     * @param latitude latitude 
+     * @param longitude longitude
+     */
     async getProperties(latitude: string, longitude: string): Promise<any> {
         const uri = this.getApi(latitude, longitude, 'property');
         return this.remoteService.get(uri);
     }
 
+    /**
+     * create the here location search API uri
+     * 
+     * @param lat latitude
+     * @param lon longitude
+     * @param q search query
+     * 
+     * @returns uri
+     */
     private getApi(lat: string, lon: string, q: string): string {
         const discoverUrl = new URL('https://discover.search.hereapi.com');
         discoverUrl.pathname = '/v1/discover';

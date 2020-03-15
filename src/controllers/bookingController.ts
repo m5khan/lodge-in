@@ -3,6 +3,8 @@ import { Service } from 'typedi';
 import { MongoService } from '../services/mongoService';
 
 /**
+ * Controllers for /booking routes
+ * 
  * TODO: User typedi controller
  * https://github.com/typestack/routing-controllers
  */
@@ -13,6 +15,12 @@ export class BookingController {
         this.addBooking = this.addBooking.bind(this);
      }
 
+    /**
+     * Handle booking request of the property and to add it to the database
+     * 
+     * @param req 
+     * @param res 
+     */ 
     public async addBooking (req: express.Request, res: express.Response) {
         try{
             // todo: validate the request body
