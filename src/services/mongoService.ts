@@ -1,6 +1,5 @@
 import { Service } from 'typedi';
 import { MongoClient, Collection, InsertWriteOpResult, Db, ObjectID } from "mongodb";
-import assert from "assert";
 import { Provider } from '../providers';
 import { DataPersistance } from '.';
 
@@ -53,6 +52,13 @@ export class MongoService implements Provider, DataPersistance {
             client,
             collection
         } as ICollection
+    }
+
+    public async addBooking(doc: any): Promise<string> {
+        const { client, collection } = await this.getCollection();
+        const insertedDoc = await collection.insertOne(doc);
+        this.closeConnection(client);
+        return insertedDoc.insertedId.toString();
     }
 
 

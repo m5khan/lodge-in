@@ -4,7 +4,7 @@ import { HereLocationService } from '../services/hereLocationService';
 
 export const propertyRoutes:express.Router = express.Router();
 
-const hereLocationService:HereLocationService = Container.get(HereLocationService)
+const hereLocationService:HereLocationService = Container.get(HereLocationService);
 
 propertyRoutes.get('/', async (req: express.Request, res: express.Response) => {
     const location: string = req.query['at'];

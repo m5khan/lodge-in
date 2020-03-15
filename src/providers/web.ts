@@ -5,13 +5,14 @@ import cors from 'cors';
 import { Server } from 'http';
 import { Provider } from '.';
 import { propertyRoutes } from '../routes/properties.route';
+import { BookingRoute } from '../routes/bookings.route';
 
 @Service()
 export class WebProvider implements Provider {
 
     private httpServer?: Server;
 
-    constructor() {
+    constructor(private bookingRoute: BookingRoute) {
         if(!process.env.PORT) {
             console.log("Port not found");
             process.exit(1);
@@ -32,6 +33,7 @@ export class WebProvider implements Provider {
 
         // Add router
         app.use('/properties', propertyRoutes);
+        app.use('/bookings', this.bookingRoute.routes);
 
         // Initialize http server
         return new Promise<void> ((resolve, reject) => {
