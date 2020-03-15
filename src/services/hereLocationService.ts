@@ -16,8 +16,12 @@ export class HereLocationService implements Location {
         return this.remoteService.get(url);
     }
 
+    async getProperties(latitude: string, longitude: string): Promise<any> {
+        const uri = this.getApi(latitude, longitude, 'property');
+        return this.remoteService.get(uri);
+    }
+
     private getApi(lat: string, lon: string, q: string): string {
-        //const hereSearchApi = 'https://discover.search.hereapi.com/v1/discover?at=48.135124,11.581981&q=hotels&apiKey=dGPFyjnFTBNoCzTcpteWs8EloxnXq_vop4EdWr3CifQ'
         const discoverUrl = new URL('https://discover.search.hereapi.com');
         discoverUrl.pathname = '/v1/discover';
         discoverUrl.searchParams.set('at', `${lat},${lon}`);
