@@ -4,7 +4,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 import { Server } from 'http';
 import { Provider } from '.';
-import { propertyRoutes } from '../routes/properties.route';
+import { PropertyRoute } from '../routes/properties.route';
 import { BookingRoute } from '../routes/bookings.route';
 
 @Service()
@@ -12,7 +12,10 @@ export class WebProvider implements Provider {
 
     private httpServer?: Server;
 
-    constructor(private bookingRoute: BookingRoute) {
+    constructor(
+        private bookingRoute: BookingRoute,
+        private propertyRoute: PropertyRoute
+        ) {
         if(!process.env.PORT) {
             console.log("Port not found");
             process.exit(1);
@@ -31,8 +34,8 @@ export class WebProvider implements Provider {
         app.use(express.json());
         app.use(express.static('public'));
 
-        // Add router
-        app.use('/properties', propertyRoutes);
+        // Configure Routing
+        app.use('/properties', this.propertyRoute.route);
         app.use('/bookings', this.bookingRoute.routes);
 
         // Initialize http server

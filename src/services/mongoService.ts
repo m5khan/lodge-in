@@ -62,6 +62,15 @@ export class MongoService implements Provider, DataPersistance {
     }
 
 
+    public async getBookings(propId: string): Promise<any[]> {
+        const { client, collection } = await this.getCollection();
+        const result = await collection.find({
+            id : propId
+        });
+        const resultArr = await result.toArray();
+        this.closeConnection(client);
+        return resultArr;
+    }
 }
 
 
