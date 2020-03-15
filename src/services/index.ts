@@ -1,4 +1,4 @@
 export interface Location {
-    getLocation: ()=>void;
+    discover: (latitude: string, longitude: string, query: string)=>void;
     getHotels: ()=>void;
 }
