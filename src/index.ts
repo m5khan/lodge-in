@@ -37,6 +37,7 @@ class Application implements Provider {
 
 (async () => {
     const app = Container.get<Provider>(Application);
-    console.log('Bootstrapping Application');
-    app.bootstrap();
+    console.log('Bootstrapping Application...');
+    await app.bootstrap();
+    console.log('Bootstrap Successful. Application is now running.')
 })();

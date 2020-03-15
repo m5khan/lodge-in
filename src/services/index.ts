@@ -3,3 +3,8 @@ export interface Location {
     getHotels: ()=> Promise<any>;
     getProperties: (latutude: string, longitude: string) => Promise<any>;
 }
+
+export interface DataPersistance {
+    openConnection(): Promise<any>;
+    closeConnection: (connection:any) => Promise<any>;
+}
