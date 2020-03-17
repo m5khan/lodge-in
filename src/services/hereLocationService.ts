@@ -7,7 +7,7 @@ export class HereLocationService implements Location {
 
     constructor(private remoteService: RemoteService) {}
 
-    discover(latitude: string, longitude:string, query:string) {
+    discover() {
         
     }
     

@@ -55,7 +55,7 @@ export class WebProvider implements Provider {
     }
 
     public async shutdown() {
-        return new Promise<void>((resolve, reject) => {
+        return new Promise<void>(() => {
             this.httpServer?.close();
         });
     }

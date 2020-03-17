@@ -1,12 +1,4 @@
-import React, { Component} from "react";
-
-interface MyProps {
-    [key:string]:any;
-}
-
-interface MyState {
-    [key:string]:any
-}
+import React from "react";
 
 const App = () => {
     return(

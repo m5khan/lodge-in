@@ -22,7 +22,6 @@ export class MongoService implements Provider, DataPersistance {
         console.log("bootstrapping mongo service");
         const mongoClient :MongoClient = await this.openConnection();
         console.log("MongoDB Server connection successful");
-        const db:Db = mongoClient.db(this.dbName);
         mongoClient.close();  
     }
 
