@@ -1,9 +1,15 @@
-import React from "react";
+import React from 'react';
+import MapComponent from './Map';
 
-const App = () => {
+import '../styles/App.css';
+
+const App: React.FC = () => {
     return(
-        <h1>hello world this is react running</h1>
-    )
-}
-
-export default App;
+        <div className='MainContainer'>
+            <div className='Header'></div>
+            <MapComponent />
+        </div>
+        )
+    }
+    
+    export default App;
