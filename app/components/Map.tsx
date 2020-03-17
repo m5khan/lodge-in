@@ -9,7 +9,7 @@ const MapComponent: React.FC = () => {
     
     useEffect(() => {
         const mapService:MapService = MapService.getInstance();
-        mapService.initializeMap(mapContainerElement.current);
+        mapService.initialize(mapContainerElement.current);
         return () => {
             mapService.terminate();
         }
