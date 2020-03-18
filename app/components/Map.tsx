@@ -1,22 +1,30 @@
-import React, {useEffect, RefObject} from 'react';
+import React, { RefObject, useEffect, useState } from 'react';
 import { MapService } from '../services/MapService';
+import { LocationData } from '../services/MapService';
 
 import '../styles/Map.css';
 
+type Props = {
+    setLocData: React.Dispatch<React.SetStateAction<LocationData | null>>;
+}
+
 let mapContainerElement: RefObject<HTMLDivElement> = React.createRef();
 
-const MapComponent: React.FC = () => {
+const MapComponent: React.FC<Props> = (props: Props) => {
     
     useEffect(() => {
         const mapService:MapService = MapService.getInstance();
-        mapService.initialize(mapContainerElement.current);
+        mapService.initialize(mapContainerElement.current, props.setLocData);
         return () => {
             mapService.terminate();
         }
         }, []); 
         
         return (
-            <div id='mapContainer' className='MapContainer' ref={mapContainerElement}></div>
+            <>
+                <div id='mapContainer' className='MapContainer' ref={mapContainerElement}></div>
+            </>
+            
             )
         }
         

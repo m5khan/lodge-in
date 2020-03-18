@@ -1,4 +1,5 @@
 import { api } from './ApiClient';
+import React from 'react';
 
 
 /**
@@ -12,6 +13,7 @@ export class MapService {
     private markerIcon: any; 
     private markerIconActive: any;
     private markerGroup: any;
+    private setLocationData: React.Dispatch<React.SetStateAction<LocationData | null>> = () => {};
     
     constructor() {
         this.platform = new H.service.Platform({
@@ -28,7 +30,8 @@ export class MapService {
         return MapService.instance;
     }
     
-    public async initialize(divElement: HTMLDivElement | null): Promise<void> {
+    public async initialize(divElement: HTMLDivElement | null, setLocData: React.Dispatch<React.SetStateAction<LocationData | null>>): Promise<void> {
+        this.setLocationData = setLocData;
         // Instantiate (and display) a map object:
         this.hereMap = this.initializeMap(divElement);
         // Enable the event system on the map instance:
@@ -81,10 +84,10 @@ export class MapService {
                 const marker = new H.map.Marker(markerOptions, { icon: this.markerIcon });
                 marker.setData(item);
                 marker.addEventListener('tap', () => {
-                    console.log(marker.getData());
                     this.markerGroup.forEach((m: any) => m.setIcon(this.markerIcon));
                     marker.setIcon(this.markerIconActive);
                     // set the data from the map to react state
+                    this.setLocationData(marker.getData());
                 });
                 this.markerGroup.addObject(marker);
             });
