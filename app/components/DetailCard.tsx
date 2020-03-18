@@ -5,6 +5,7 @@ import '../styles/DetailCard.css';
 
 type Props = {
     locationData: LocationData | null;
+    showConfirmDialog: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const DetailCard: React.FC<Props> = (props:Props) => {
@@ -22,7 +23,7 @@ const DetailCard: React.FC<Props> = (props:Props) => {
                 </div>
             </div>
             <div className='BookButtonSection'>
-                <button onClick={() => {}} className='BookButton'>Book</button>
+                <button onClick={() => {props.showConfirmDialog(true)}} className='BookButton'>Book</button>
             </div>
         </div>
             : <></>)

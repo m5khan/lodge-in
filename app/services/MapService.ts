@@ -11,7 +11,6 @@ export class MapService {
     private markerIcon: any; 
     private markerIconActive: any;
     private markerGroup: any;
-    //private setLocationData: React.Dispatch<React.SetStateAction<LocationData | null>> = () => {};
     private setLocationData:(data:LocationData)=> void = () => {};
     
     constructor() {
@@ -64,8 +63,8 @@ export class MapService {
             const {lat, lng}: Position = mapInstance.getCenter() as Position;
             const locData = await api.getProperties(lat, lng);
             const items: LocationData[] = locData.items;
-            // take up to 10 items
-            const limitItems = items.splice(0,10);
+            // take up to 15 items
+            const limitItems = items.splice(0,15);
             return limitItems;
         }
         

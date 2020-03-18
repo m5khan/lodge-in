@@ -1,4 +1,4 @@
-import React, { RefObject, useEffect, useContext } from 'react';
+import React, { RefObject, useEffect, useContext, useState } from 'react';
 import { MapService } from '../services/MapService';
 import DetailCard from './DetailCard';
 import BookingDialog from './BookingDialog';
@@ -14,6 +14,7 @@ let mapContainerElement: RefObject<HTMLDivElement> = React.createRef();
 
 const MapComponent: React.FC = () => {
     const {locationData, updateLocationData} = useContext(LocationContext);
+    const [confirmDialig, showConfirmDialog] = useState(false);
     
     useEffect(() => {
         const mapService:MapService = MapService.getInstance();
@@ -26,8 +27,8 @@ const MapComponent: React.FC = () => {
         return (
             <>
                 <div id='mapContainer' className='MapContainer' ref={mapContainerElement}>
-                    <DetailCard locationData={locationData}/>
-                    <BookingDialog />
+                    {confirmDialig ? <BookingDialog showConfirmDialog={showConfirmDialog} /> : ''}
+                    <DetailCard locationData={locationData} showConfirmDialog={showConfirmDialog}/>
                 </div>
             </>
             
