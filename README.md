@@ -4,7 +4,6 @@ Full-stack demo application for limehome to search for near by properties and bo
 
 ## Demo
 
-
 ## Application Structure
 
 Application has two folders front-end and backend stack.
@@ -22,3 +21,18 @@ Application has two folders front-end and backend stack.
 Webpack compiles typescript and bundles all the modules and dependencies for both Server and client.
 
 Server bundle goes to `dist/server.js` and client bundle goes to `public/client.js`.
+
+### Docker
+
+Applicaition is Dockerized and can be easily setup and run on any machine. 
+
+## How to Run on Local Machine
+
+The easiest way run the application is via `docker-compose`.
+
+1. Download/Clone the project on local machine
+2. Rename `.env_template` to `.env` 
+3. Add HERE Maps REST API key in `.env` file. Check the [documentation](https://developer.here.com/documentation/maps/dev_guide/topics/credentials.html)
+4. run `docker-compose up`
+5. Access the application on `http://localhost:8080`
+6. For test purpose you can access Database with mongo express `http://localhost:8082/db/local`
