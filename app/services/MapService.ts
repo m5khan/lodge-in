@@ -10,6 +10,7 @@ export class MapService {
     private platform: any;
     private hereMap: any;
     private markerIcon: any; 
+    private markerIconActive: any;
     private markerGroup: any;
     
     constructor() {
@@ -17,6 +18,7 @@ export class MapService {
             'apikey': '6zhmzcvXH8-jk6sCareHPWl7MNxawc00aiO1dwyWSH8'
         });
         this.markerIcon = new H.map.Icon('/images/markericon.svg');
+        this.markerIconActive = new H.map.Icon('/images/markericon_active.svg');
     }
     
     static getInstance(): MapService {
@@ -80,6 +82,8 @@ export class MapService {
                 marker.setData(item);
                 marker.addEventListener('tap', () => {
                     console.log(marker.getData());
+                    this.markerGroup.forEach((m: any) => m.setIcon(this.markerIcon));
+                    marker.setIcon(this.markerIconActive);
                     // set the data from the map to react state
                 });
                 this.markerGroup.addObject(marker);
@@ -95,8 +99,9 @@ export class MapService {
             this.platform = null;
             this.hereMap = null;
             this.removeMarkerGroup(this.markerGroup);
+            this.markerGroup = null;
             this.markerIcon = null;
-            this.markerIcon = null;
+            this.markerIconActive = null;
         }
         
     }
