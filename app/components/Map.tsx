@@ -1,6 +1,7 @@
 import React, { RefObject, useEffect, useContext } from 'react';
 import { MapService } from '../services/MapService';
 import DetailCard from './DetailCard';
+import BookingDialog from './BookingDialog';
 import { LocationContext } from '../context/LocationContext';
 
 import '../styles/Map.css';
@@ -26,6 +27,7 @@ const MapComponent: React.FC = () => {
             <>
                 <div id='mapContainer' className='MapContainer' ref={mapContainerElement}>
                     <DetailCard locationData={locationData}/>
+                    <BookingDialog />
                 </div>
             </>
             

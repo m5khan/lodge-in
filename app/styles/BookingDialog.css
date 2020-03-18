@@ -1,0 +1,58 @@
+.BookingDialog {
+    position: relative;
+}
+
+.BookingDialogForm {
+    position: absolute;
+    background-color: white;
+    width: 200px;
+    height: 150px;
+    z-index: 2;
+    left: 50%;
+    top: 75px;
+    margin-left: -100px;
+    box-shadow: 1px 1px 4px grey;
+}
+
+.BookingFormContainer {
+    width: 160px;
+    margin: 20px auto;
+}
+
+.BookingFormContainer label, .BookingFormContainer select {
+    text-align: center;
+    margin-top: 15px;
+    display: block;
+}
+
+.BookingFormContainer label {
+    font-size: 14px;
+}
+
+.BookingFormContainer select {
+    width: 100%;
+}
+
+.BookConfirm {
+    background-color: #2e93fd;
+    width: 100%;
+    margin-top: 20px;
+    padding: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+.BookConfirm:focus {
+    outline: none;
+}
+
+.BookConfirm:active {
+    background-color: #358de8;
+}
+
+.BookCloseDialog {
+    float: right;
+    padding: 10px;
+    margin-top: -5px;
+    cursor: pointer;
+}
