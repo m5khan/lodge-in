@@ -19,13 +19,16 @@ body {
 }
 
 .Burger {
-    height: 15px;
+    height: 18px;
     background-image: url(/images/Burger_Icon.svg);
     background-repeat: no-repeat;
     float: right;
-    width: 28px;
-    padding: 1px 0;
-    margin-top: 11px;
+    width: 31px;
+    padding: 3px 0;
+    margin-top: 4px;
+    margin-right: 6px;
+    cursor: pointer;
+    background-position: center;
 }
 
 .Header {

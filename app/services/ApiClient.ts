@@ -27,6 +27,12 @@ export default class ApiClient {
             console.error(e);
         })
     }
+
+    public async getPropertyBookings(propertyId: string): Promise<void> {
+        const res = await fetch(`/properties/${propertyId}/bookings`);
+        const data = await res.json();
+        return data;
+    }
 }
 
 export const api = new ApiClient();
