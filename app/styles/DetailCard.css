@@ -1,0 +1,57 @@
+.DetailCard {
+    height: 215px;
+    position: absolute;
+    /* bottom: 100%; */
+    z-index: 10;
+    width: 86%;
+    display: block;
+    top: 242px;
+    left: 7%;
+    background-color: #ffffff;
+}
+
+.ImagePanel {
+    height: 74%;
+    width: 49%;
+    float: left;
+}
+
+.DetailPanel {
+    height: 74%;
+    width: 49%;
+    float: right;
+}
+
+.BookButtonSection {
+    clear: both;
+    overflow: auto;
+    height: 26%;
+}
+
+.BookButton {
+    margin: 0 auto;
+    display: block;
+    margin-top: 10px;
+    padding: 9px 110px;
+    font-size: 14px;
+    background-color: #f7941d;;
+    border: 0;
+    cursor: pointer;
+    color: white;
+}
+
+.BookButton:focus {
+    outline: none;
+}
+
+.BookButton:active {
+    background-color: orange;
+}
+
+.ImgBox {
+    height: 92%;
+    /* margin: 0 auto; */
+    display: block;
+    margin-left: 12px;
+    margin-top: 12px;
+}

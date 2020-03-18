@@ -1,3 +1,7 @@
+body {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
 .MainContainer {
     width: 320px;
     height: 480px;
@@ -7,8 +11,8 @@
 .Logo {
     height: 25px;
     width: 50%;
-    background-image: url(/images/design_Limehome_Logo.svg);
-    background-repeat: no-repeat;
+    /* background-image: url(/images/design_Limehome_Logo.svg);
+    background-repeat: no-repeat; */
     float: left;
     margin-top: 4px;
     margin-left: 4px;

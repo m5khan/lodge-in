@@ -13,7 +13,9 @@ const App: React.FC = () => {
     return(
         <div className='MainContainer'>
             <div className='Header'>
-                <div className='Logo'></div>
+                <div className='Logo'>
+                    <img src='/images/design_Limehome_Logo.svg' alt='limehome logo'/>
+                </div>
                 <div className='Burger'></div>
             </div>
             <MapComponent setLocData={setLocData}/>

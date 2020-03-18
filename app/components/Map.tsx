@@ -1,6 +1,7 @@
-import React, { RefObject, useEffect, useState } from 'react';
+import React, { RefObject, useEffect } from 'react';
 import { MapService } from '../services/MapService';
 import { LocationData } from '../services/MapService';
+import DetailCard from './DetailCard';
 
 import '../styles/Map.css';
 
@@ -22,7 +23,9 @@ const MapComponent: React.FC<Props> = (props: Props) => {
         
         return (
             <>
-                <div id='mapContainer' className='MapContainer' ref={mapContainerElement}></div>
+                <div id='mapContainer' className='MapContainer' ref={mapContainerElement}>
+                    <DetailCard />
+                </div>
             </>
             
             )
