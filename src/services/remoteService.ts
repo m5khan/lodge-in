@@ -33,7 +33,6 @@ export class RemoteService {
                 res.on('end', () => {
                     try {
                         const parsedData: any = JSON.parse(rawData);
-                        console.log(parsedData);
                         resolve(parsedData);
                     } catch (e) {
                         console.error(e.message);

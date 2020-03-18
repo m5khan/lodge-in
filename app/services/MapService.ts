@@ -26,7 +26,7 @@ export class MapService {
         return MapService.instance;
     }
     
-    public initialize(divElement: HTMLDivElement | null) {
+    public async initialize(divElement: HTMLDivElement | null): Promise<void> {
         // Instantiate (and display) a map object:
         this.hereMap = this.initializeMap(divElement);
         // Enable the event system on the map instance:
@@ -50,15 +50,19 @@ export class MapService {
         
         private addListeners(mapInstance: any) {
             
-            mapInstance.addEventListener('dragend', async () => {
-                const {lat, lng}: Position = mapInstance.getCenter() as Position;
-                const locData = await api.getProperties(lat, lng);
-                const items: LocationData[] = locData.items;
-                // take up to 10 items
-                const limitItems = items.splice(0,10);
-                this.addMarkers(limitItems);
-                
+            mapInstance.addEventListener('mapviewchangeend', async () => {
+                const items: LocationData[] = await this.fetchLocations(mapInstance);
+                this.addMarkers(items);
             });
+        }
+
+        private async fetchLocations(mapInstance: any): Promise<LocationData[]> {
+            const {lat, lng}: Position = mapInstance.getCenter() as Position;
+            const locData = await api.getProperties(lat, lng);
+            const items: LocationData[] = locData.items;
+            // take up to 10 items
+            const limitItems = items.splice(0,10);
+            return limitItems;
         }
         
         private addMarkers (items: LocationData[]) {
