@@ -1,7 +1,7 @@
 import { LocationData } from './MapService';
 
 interface Response {
-    items: LocationData[]
+    items: LocationData[];
 }
 
 export default class ApiClient {
