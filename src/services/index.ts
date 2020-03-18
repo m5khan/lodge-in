@@ -1,7 +1,7 @@
 export interface Location {
-    discover: (latitude: string, longitude: string, query: string)=>void;
+    discover: (latitude: number, longitude: number, query: string)=>void;
     getHotels: ()=> Promise<any>;
-    getProperties: (latutude: string, longitude: string) => Promise<any>;
+    getProperties: (latutude: number, longitude: number) => Promise<any>;
 }
 
 export interface DataPersistance {

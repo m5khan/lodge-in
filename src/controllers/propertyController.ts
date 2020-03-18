@@ -32,11 +32,20 @@ export class PropertyController {
             const location: string = req.query['at'];
             let data = null;
             if(location) {
-                const [ lat, lon ] = location.split(',');
-                data = await this.hereLocationService.getProperties(lat, lon);
+                try{
+                    const [ lat, lon ] = location.split(',');
+                    const fLat = parseFloat(lat);
+                    const flng = parseFloat(lon);
+                    if(fLat && flng) {
+                        data = await this.hereLocationService.getProperties(fLat, flng);
+                    } else {
+                        res.status(400);   
+                    }
+                } catch(e ) {
+                    res.status(400);
+                }
             } else {
                 res.status(400);
-                data = 'please provide latutude and longitude. ?at=x,y';
             }
             res.json(data);
         }
@@ -50,7 +59,8 @@ export class PropertyController {
          */
         public async getPropertyBooking(req: express.Request, res: express.Response) {
             const propId: string = req.params['id'];
-            if (propId) {
+            const idRegex = /(here\:?)(\w*\d*\-?\:?)+/;
+            if (propId && idRegex.test(propId)) {
                 try {
                     const result: any[] = await this.mongoService.getBookings(propId);
                     res.json(result);
@@ -60,7 +70,7 @@ export class PropertyController {
                 }
             } else {
                 res.status(400);
-                res.json('please provide property id');
+                res.json('please provide valid property id');
             }
         }
         

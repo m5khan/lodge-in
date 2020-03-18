@@ -16,7 +16,7 @@ export class BookingRoute {
 
         const bookingRoutes:express.Router = express.Router();
         
-        bookingRoutes.post('/', this.bookingController.addBooking);
+        bookingRoutes.post('/', this.bookingController.validateBookingData, this.bookingController.addBooking);
 
         return bookingRoutes;
     }

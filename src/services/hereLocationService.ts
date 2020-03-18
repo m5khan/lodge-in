@@ -15,7 +15,7 @@ export class HereLocationService implements Location {
      * Get hotels in munich
      */
     async getHotels(): Promise<any> {
-        const url = this.getApi('48.135124', '11.581981', 'hotel');
+        const url = this.getApi(48.135124, 11.581981, 'hotel');
         return this.remoteService.get(url);
     }
 
@@ -26,7 +26,7 @@ export class HereLocationService implements Location {
      * @param latitude latitude 
      * @param longitude longitude
      */
-    async getProperties(latitude: string, longitude: string): Promise<any> {
+    async getProperties(latitude: number, longitude: number): Promise<any> {
         const uri = this.getApi(latitude, longitude, 'property');
         return this.remoteService.get(uri);
     }
@@ -40,7 +40,7 @@ export class HereLocationService implements Location {
      * 
      * @returns uri
      */
-    private getApi(lat: string, lon: string, q: string): string {
+    private getApi(lat: number, lon: number, q: string): string {
         const discoverUrl = new URL('https://discover.search.hereapi.com');
         discoverUrl.pathname = '/v1/discover';
         discoverUrl.searchParams.set('at', `${lat},${lon}`);
