@@ -135,5 +135,9 @@ export class MapService {
         street: string;
         postalCode: string;
         houseNumber: string;
+    }
 
+    export interface BookLocationData extends LocationData {
+        day: string;
+        time?: Date;
     }

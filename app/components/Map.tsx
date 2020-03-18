@@ -27,7 +27,7 @@ const MapComponent: React.FC = () => {
         return (
             <>
                 <div id='mapContainer' className='MapContainer' ref={mapContainerElement}>
-                    {confirmDialig ? <BookingDialog showConfirmDialog={showConfirmDialog} /> : ''}
+                    {confirmDialig ? <BookingDialog showConfirmDialog={showConfirmDialog} locationData={locationData} /> : ''}
                     <DetailCard locationData={locationData} showConfirmDialog={showConfirmDialog}/>
                 </div>
             </>

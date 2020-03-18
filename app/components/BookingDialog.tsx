@@ -1,10 +1,14 @@
 import React from 'react';
-
+import { LocationData, BookLocationData } from '../services/MapService';
+import { api } from '../services/ApiClient';
 import '../styles/BookingDialog.css';
 
 type Props = {
-    showConfirmDialog: React.Dispatch<React.SetStateAction<boolean>>
+    showConfirmDialog: React.Dispatch<React.SetStateAction<boolean>>,
+    locationData: LocationData | null
 }
+
+let dayBuffer = 'Monday' // default value;
 
 const BookingDialog = (props: Props) => {
     return (
@@ -13,19 +17,30 @@ const BookingDialog = (props: Props) => {
             <span className='BookCloseDialog' onClick={() => {props.showConfirmDialog(false)}}>&times;</span>
                 <div className='BookingFormContainer'>
                 <label htmlFor="day-select">Select Booking Day</label>
-                <select name="Days" id="day-select">
-                    <option value="monday">Monday</option>
-                    <option value="tuesday">Tuesday</option>
-                    <option value="wednesday">Wednesday</option>
-                    <option value="thursday">Thrusday</option>
-                    <option value="friday">Friday</option>
-                    <option value="saturday">Saturday</option>
+                <select onChange={onSelectHandler} name="Days" id="day-select">
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thrusday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
                 </select>
-                <button className='BookConfirm' onClick={()=>{props.showConfirmDialog(false)}}>Book Property</button>
+                <button className='BookConfirm' onClick={()=>{ConfirmBookingHandler(props)}}>Book Property</button>
                 </div>
             </div>
         </div>
     )
+}
+
+const ConfirmBookingHandler = async (props: Props) => {
+    props.showConfirmDialog(false);
+    const bookData: BookLocationData = {...props.locationData, day: dayBuffer} as BookLocationData;
+    await api.bookProperty(bookData);
+}
+
+const onSelectHandler = (e: any) => {
+    dayBuffer = e.target.value;
+    
 }
 
 export default BookingDialog;
