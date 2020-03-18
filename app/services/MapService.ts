@@ -1,6 +1,4 @@
 import { api } from './ApiClient';
-import React from 'react';
-
 
 /**
  * This class is handling all the side effects as said in react language
@@ -13,7 +11,8 @@ export class MapService {
     private markerIcon: any; 
     private markerIconActive: any;
     private markerGroup: any;
-    private setLocationData: React.Dispatch<React.SetStateAction<LocationData | null>> = () => {};
+    //private setLocationData: React.Dispatch<React.SetStateAction<LocationData | null>> = () => {};
+    private setLocationData:(data:LocationData)=> void = () => {};
     
     constructor() {
         this.platform = new H.service.Platform({
@@ -30,7 +29,7 @@ export class MapService {
         return MapService.instance;
     }
     
-    public async initialize(divElement: HTMLDivElement | null, setLocData: React.Dispatch<React.SetStateAction<LocationData | null>>): Promise<void> {
+    public async initialize(divElement: HTMLDivElement | null, setLocData: (data:LocationData)=>void): Promise<void> {
         this.setLocationData = setLocData;
         // Instantiate (and display) a map object:
         this.hereMap = this.initializeMap(divElement);
@@ -114,7 +113,7 @@ export class MapService {
         title: string;
         id: string;
         resultType: string;
-        address: {[key: string]: string};
+        address: Address;
         access: any;
         distance: number;
         categories: any;
@@ -124,4 +123,18 @@ export class MapService {
     interface Position {
         lat: number;
         lng: number;
+    }
+
+    interface Address {
+        label: string;
+        countryCode: string;
+        countryName: string;
+        state: string;
+        county: string;
+        city: string;
+        district: string;
+        street: string;
+        postalCode: string;
+        houseNumber: string;
+
     }

@@ -1,18 +1,31 @@
 import React from 'react';
+import { LocationData } from '../services/MapService';
 
 import '../styles/DetailCard.css';
 
-const DetailCard: React.FC = () => {
+type Props = {
+    locationData: LocationData | null;
+}
+
+const DetailCard: React.FC<Props> = (props:Props) => {
+    const locData = props.locationData;
     return (
+        (locData ? 
         <div className='DetailCard'>
             <div className='ImagePanel'>
                 <img className='ImgBox' src='/images/livingroom.jpg' alt='limehome property for booking or renting'></img>
             </div>
-            <div className='DetailPanel'></div>
+            <div className='DetailPanel'>
+                <div className='DetailContentBox'>
+                    <h5>{locData.title}</h5>
+                    <p>{locData.address.label}</p>
+                </div>
+            </div>
             <div className='BookButtonSection'>
-                <button onClick={(e) => {e.preventDefault()}} className='BookButton'>Book</button>
+                <button onClick={() => {}} className='BookButton'>Book</button>
             </div>
         </div>
+            : <></>)
     )
 }
 

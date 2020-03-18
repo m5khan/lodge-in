@@ -55,3 +55,15 @@
     margin-left: 12px;
     margin-top: 12px;
 }
+
+.DetailContentBox {
+    margin-right: 12px;
+    height: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.DetailContentBox p {
+    font-size: 12px;
+    text-overflow: ellipsis;
+}

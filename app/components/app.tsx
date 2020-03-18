@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import MapComponent from './Map';
-import { LocationData } from '../services/MapService';
+import LocationContextProvider from '../context/LocationContext';
 
 import '../styles/App.css';
 
 const App: React.FC = () => {
-
-    const [locData, setLocData] =  useState<LocationData| null>(null);
-
-    console.log(locData, 'render call');
 
     return(
         <div className='MainContainer'>
@@ -18,7 +14,9 @@ const App: React.FC = () => {
                 </div>
                 <div className='Burger'></div>
             </div>
-            <MapComponent setLocData={setLocData}/>
+            <LocationContextProvider>
+                <MapComponent/>
+            </LocationContextProvider>
         </div>
         )
     }
