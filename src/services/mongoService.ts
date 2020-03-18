@@ -11,7 +11,7 @@ export class MongoService implements Provider, DataPersistance {
     constructor() { }
 
     private get dbUrl(): string {
-        return process.env.MONGO_URI as string;
+        return process.env.MONGO_MLAB_URI ? process.env.MONGO_MLAB_URI as string :  process.env.MONGO_URI as string;
     } 
 
     private get dbName(): string {
