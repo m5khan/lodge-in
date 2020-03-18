@@ -1,4 +1,31 @@
 .MainContainer {
     width: 320px;
     height: 480px;
+    margin: 0 auto;
+}
+
+.Logo {
+    height: 25px;
+    width: 50%;
+    background-image: url(/images/design_Limehome_Logo.svg);
+    background-repeat: no-repeat;
+    float: left;
+    margin-top: 4px;
+    margin-left: 4px;
+}
+
+.Burger {
+    height: 15px;
+    background-image: url(/images/Burger_Icon.svg);
+    background-repeat: no-repeat;
+    float: right;
+    width: 28px;
+    padding: 1px 0;
+    margin-top: 11px;
+}
+
+.Header {
+    height: 30px;
+    padding: 3px;
+    background-color: #ebeae6;
 }

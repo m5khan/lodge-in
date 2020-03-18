@@ -63,7 +63,7 @@ export class MapService {
         
         private addMarkers (items: LocationData[]) {
             if(this.markerGroup) {
-                this.removeMarkerGroup(this.markerIcon);
+                this.removeMarkerGroup(this.markerGroup);
             }
             this.markerGroup = new H.map.Group();
             this.hereMap.addObject(this.markerGroup);
