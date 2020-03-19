@@ -24,6 +24,7 @@ const BookingDialog = (props: Props) => {
                     <option value="Thursday">Thrusday</option>
                     <option value="Friday">Friday</option>
                     <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
                 </select>
                 <button className='BookConfirm' onClick={()=>{ConfirmBookingHandler(props)}}>Book Property</button>
                 </div>
