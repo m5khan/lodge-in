@@ -17,6 +17,6 @@ WORKDIR /opt/lodge-in
 COPY . .
 
 RUN npm install && \
-    npm run webpack
+    npm run build
 
 #CMD ["npm", "run", "start"]           # uncommend this line to run docker file. Run docker compose otherwise.

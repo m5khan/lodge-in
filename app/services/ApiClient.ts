@@ -6,6 +6,7 @@ interface Response {
 
 export default class ApiClient {
     
+    
     public getProperties (latitude: number, longitude: number): Promise<Response> {
         return fetch(`/properties?at=${latitude},${longitude}`).then((res) => {
             return res.json();

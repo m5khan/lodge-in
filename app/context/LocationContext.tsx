@@ -1,6 +1,11 @@
 import React , { createContext, useState } from 'react';
 import { LocationData } from '../services/MapService';
 
+/**
+ * LocationContext provides the locationData state and updateLocationData handle
+ * locationData holds the information about the selected location.
+ * This objects is set by the MapService when the marker is clicked
+ */
 
 interface ContextValue {
     locationData: LocationData | null;

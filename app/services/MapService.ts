@@ -2,6 +2,8 @@ import { api } from './ApiClient';
 
 /**
  * This class is handling all the side effects as said in react language
+ * as in context with the Here maps api, Loading the map and map interactions
+ * for example adding markers and handling events triggered on Here Maps
  */
 export class MapService {
     
@@ -28,6 +30,12 @@ export class MapService {
         return MapService.instance;
     }
     
+    /**
+     * Initialize the HERE Maps and attach relevant event listeners
+     * 
+     * @param divElement Elemenet where the Map will be appended by Here Api
+     * @param setLocData React Dispatch variable to update react state
+     */
     public async initialize(divElement: HTMLDivElement | null, setLocData: (data:LocationData)=>void): Promise<void> {
         this.setLocationData = setLocData;
         // Instantiate (and display) a map object:
@@ -39,6 +47,7 @@ export class MapService {
         new H.mapevents.Behavior(mapEvents);
     }
     
+
     private initializeMap (divElement: HTMLDivElement|null): any {
         const defaultLayers = this.platform.createDefaultLayers();
         const hereMap =  new H.Map(
@@ -51,6 +60,11 @@ export class MapService {
             return hereMap;
         }
         
+        /**
+         * Attach all the initial event listers on the map here
+         * 
+         * @param mapInstance 
+         */
         private addListeners(mapInstance: any) {
             
             mapInstance.addEventListener('mapviewchangeend', async () => {
@@ -59,6 +73,11 @@ export class MapService {
             });
         }
 
+        /**
+         * Fetch locations to update the markers onv the map
+         * 
+         * @param mapInstance Here Map instance
+         */
         private async fetchLocations(mapInstance: any): Promise<LocationData[]> {
             const {lat, lng}: Position = mapInstance.getCenter() as Position;
             const locData = await api.getProperties(lat, lng);
@@ -96,6 +115,9 @@ export class MapService {
             this.hereMap.removeObject(markerGroup);
         }
         
+        /**
+         * Destructor
+         */
         public terminate () {
             this.platform = null;
             this.hereMap = null;
