@@ -12,7 +12,7 @@ const App: React.FC = () => {
         <div className='MainContainer'>
             <div className='Header'>
                 <div className='Logo'>
-                    <img src='/images/design_Limehome_Logo.svg' alt='limehome logo'/>
+                    Lodge-In
                 </div>
                 <div className='Burger' onClick={()=>{showSidePanel(!sidePanel)}}></div>
             </div>

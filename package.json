@@ -4,6 +4,7 @@
   "description": "Simple client/service application to search for near by hotel based on Node.js and React.",
   "main": "src/index.ts",
   "dependencies": {
+    "@material-ui/core": "^4.9.7",
     "@types/cors": "^2.8.6",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.3",

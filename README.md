@@ -1,6 +1,6 @@
 # lodge-in
 
-Full-stack demo application for limehome to search for near by properties and book them using HERE location API. Based on Node.js, React, typescript and MongoDB.
+Full-stack showcase application to search for near by properties and book them using HERE location API. Based on Node.js, React, typescript and MongoDB.
 
 ## Demo
 Check out live **[demo here](https://lodge-in.herokuapp.com/)** 
