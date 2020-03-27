@@ -43,8 +43,6 @@ Note: I left my HERE Maps api key in the file for demo purpose. I will deactivat
 
 ## Technical Spec
 
-This section covers the Technical Specs as discussed in the coding challange.
-
 ### Back-end
 
 Tech-stack: `Node.js`, `Typescript`, `Express.js`, `MongoDB`, `TypeDI`, `REST`
@@ -94,9 +92,9 @@ Tech-stack: `Node.js`, `Typescript`, `Express.js`, `MongoDB`, `TypeDI`, `REST`
 
 ### Front-end
 
-Tech-stack: `React`, `Typescript`, `html5`, `CSS`
+Tech-stack: `React`, `Typescript`, `html5`, `CSS`, `Material-UI`, `HERE Maps`
 
-Framework used frontend include React with Typescript. No UI library i.e. Material or twitter bootstrap is used. Rather pure HTML and CSS for the UI designing.
+Framework used frontend include React with Typescript.
 
 ### Dev-OP
 
