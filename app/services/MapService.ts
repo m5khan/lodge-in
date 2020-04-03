@@ -83,7 +83,8 @@ export class MapService {
             const locData = await api.getProperties(lat, lng);
             const items: LocationData[] = locData.items;
             // take up to 15 items
-            const limitItems = items.splice(0,15);
+            // const limitItems = items.splice(0,15);
+            const limitItems = items;
             return limitItems;
         }
         
