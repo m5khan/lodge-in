@@ -7,7 +7,6 @@ import { api } from './ApiClient';
  */
 export class MapService {
     
-    private static instance: MapService;
     private platform: any;
     private hereMap: any;
     private markerIcon: any; 
@@ -21,13 +20,6 @@ export class MapService {
         });
         this.markerIcon = new H.map.Icon('/images/markericon.svg');
         this.markerIconActive = new H.map.Icon('/images/markericon_active.svg');
-    }
-    
-    static getInstance(): MapService {
-        if(!MapService.instance) {
-            MapService.instance = new MapService();
-        }
-        return MapService.instance;
     }
     
     /**
@@ -121,8 +113,8 @@ export class MapService {
          */
         public terminate () {
             this.platform = null;
-            this.hereMap = null;
             this.removeMarkerGroup(this.markerGroup);
+            this.hereMap = null;
             this.markerGroup = null;
             this.markerIcon = null;
             this.markerIconActive = null;

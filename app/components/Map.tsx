@@ -17,7 +17,7 @@ const MapComponent: React.FC = () => {
     const [confirmDialig, showConfirmDialog] = useState(false);
     
     useEffect(() => {
-        const mapService:MapService = MapService.getInstance();
+        const mapService:MapService = new MapService();
         mapService.initialize(mapContainerElement.current, updateLocationData);
         return () => {
             mapService.terminate();
