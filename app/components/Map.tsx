@@ -1,8 +1,6 @@
-import React, { RefObject, useEffect, useContext, useState } from 'react';
+import React, { RefObject, useEffect, useContext } from 'react';
 import { MapService } from '../services/MapService';
 import styled from 'styled-components';
-import DetailCard from './mobile/DetailCard';
-import BookingDialog from './mobile/BookingDialog';
 import { LocationContext } from '../context/LocationContext';
 
 import '../styles/Map.css';
@@ -19,13 +17,14 @@ const MapContainer = styled.div`
 
 type Props = {
     mobile?: boolean;
+    children?: (string | JSX.Element )[];
 }
 
 let mapContainerElement: RefObject<HTMLDivElement> = React.createRef();
 
 const MapComponent: React.FC<Props> = (props: Props) => {
-    const {locationData, updateLocationData} = useContext(LocationContext);
-    const [confirmDialig, showConfirmDialog] = useState(false);
+    const { updateLocationData } = useContext(LocationContext);
+    
     
     useEffect(() => {
         const mapService:MapService = new MapService();
@@ -36,13 +35,9 @@ const MapComponent: React.FC<Props> = (props: Props) => {
         }, []); 
         
         return (
-            <>
                 <MapContainer {...props} id='mapContainer' className='MapContainer' ref={mapContainerElement}>
-                    {confirmDialig ? <BookingDialog showConfirmDialog={showConfirmDialog} locationData={locationData} /> : ''}
-                    <DetailCard locationData={locationData} showConfirmDialog={showConfirmDialog}/>
+                    {props.children}
                 </MapContainer>
-            </>
-            
             )
         }
         
