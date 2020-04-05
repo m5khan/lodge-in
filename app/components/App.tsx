@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Box, Grid, Hidden } from '@material-ui/core';
+import { Hidden } from '@material-ui/core';
 
 import MapComponent from './Map';
 import BookingPanel from './BookingPanel';
 import LocationContextProvider from '../context/LocationContext';
+import WebView from './web/WebView';
 
 import '../styles/App.css';
 
@@ -27,7 +28,9 @@ const App: React.FC = () => {
             </div>
         </Hidden>
         <Hidden smDown>
-            <h1>Hello world</h1>
+            <LocationContextProvider>
+                <WebView />
+            </LocationContextProvider>
         </Hidden>
         </>
         )

@@ -27,7 +27,7 @@ export class HereLocationService implements Location {
      * @param longitude longitude
      */
     async getProperties(latitude: number, longitude: number): Promise<any> {
-        const uri = this.getApi(latitude, longitude, 'property');
+        const uri = this.getApi(latitude, longitude, 'hotel');
         return this.remoteService.get(uri);
     }
 
