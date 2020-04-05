@@ -1,7 +1,7 @@
 import React from 'react';
-import { LocationData } from '../services/MapService';
+import { LocationData } from '../../services/MapService';
 
-import '../styles/DetailCard.css';
+import '../../styles/DetailCard.css';
 
 type Props = {
     locationData: LocationData | null;

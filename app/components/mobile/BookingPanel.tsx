@@ -1,9 +1,9 @@
 import React, {useContext, useEffect, useState } from 'react';
-import { LocationContext } from '../context/LocationContext';
-import { api } from '../services/ApiClient';
-import { BookLocationData } from '../services/MapService';
+import { LocationContext } from '../../context/LocationContext';
+import { api } from '../../services/ApiClient';
+import { BookLocationData } from '../../services/MapService';
 
-import '../styles/BookingPanel.css';
+import '../../styles/BookingPanel.css';
 
 const BookingPanel: React.FC = () => {
     const {locationData} = useContext(LocationContext);

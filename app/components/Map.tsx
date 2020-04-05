@@ -1,8 +1,8 @@
 import React, { RefObject, useEffect, useContext, useState } from 'react';
 import { MapService } from '../services/MapService';
 import styled from 'styled-components';
-import DetailCard from './DetailCard';
-import BookingDialog from './BookingDialog';
+import DetailCard from './mobile/DetailCard';
+import BookingDialog from './mobile/BookingDialog';
 import { LocationContext } from '../context/LocationContext';
 
 import '../styles/Map.css';

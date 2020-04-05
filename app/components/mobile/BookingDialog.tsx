@@ -1,7 +1,7 @@
 import React from 'react';
-import { LocationData, BookLocationData } from '../services/MapService';
-import { api } from '../services/ApiClient';
-import '../styles/BookingDialog.css';
+import { LocationData, BookLocationData } from '../../services/MapService';
+import { api } from '../../services/ApiClient';
+import '../../styles/BookingDialog.css';
 
 type Props = {
     showConfirmDialog: React.Dispatch<React.SetStateAction<boolean>>,
