@@ -30,14 +30,16 @@ export class PropertyController {
          */
         public async getProperties(req: express.Request, res: express.Response) {
             const location: string = req.query['at'];
+            const limit: string = req.query['limit'];
             let data = null;
             if(location) {
                 try{
                     const [ lat, lon ] = location.split(',');
                     const fLat = parseFloat(lat);
                     const flng = parseFloat(lon);
+                    const lim: number|undefined = limit ? parseInt(limit) : undefined;
                     if(fLat && flng) {
-                        data = await this.hereLocationService.getProperties(fLat, flng);
+                        data = await this.hereLocationService.getLodgeServices(fLat, flng, lim);
                     } else {
                         res.status(400);   
                     }
