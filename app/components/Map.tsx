@@ -3,8 +3,6 @@ import { MapService } from '../services/MapService';
 import styled from 'styled-components';
 import { LocationContext } from '../context/LocationContext';
 
-import '../styles/Map.css';
-
 const MapContainer = styled.div`
     width: ${(props:any) => props.mobile ? '320px' : '100%'};
     height: 480px;
@@ -33,7 +31,7 @@ const MapComponent: React.FC<Props> = (props: Props) => {
             mapService.terminate();
         }
         }, []); 
-        
+
         return (
                 <MapContainer {...props} id='mapContainer' className='MapContainer' ref={mapContainerElement}>
                     {props.children}

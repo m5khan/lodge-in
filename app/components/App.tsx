@@ -4,7 +4,6 @@ import MobileView from './mobile/MobileView';
 import LocationContextProvider from '../context/LocationContext';
 import WebView from './web/WebView';
 
-import '../styles/App.css';
 
 const App: React.FC = () => {
 

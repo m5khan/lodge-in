@@ -5,12 +5,14 @@ import BookingPanel from './BookingPanel'
 import DetailCard from './DetailCard';
 import BookingDialog from './BookingDialog';
 
+import '../../styles/Mobile.css';
+
 
 const MobileView: React.FC = () => {
 
     const [sidePanel, showSidePanel] = useState(false);
     const { locationData } = useContext(LocationContext);
-    const [confirmDialig, showConfirmDialog] = useState(false);
+    const [confirmDialog, showConfirmDialog] = useState(false);
 
     return (
         <React.Fragment>
@@ -21,8 +23,8 @@ const MobileView: React.FC = () => {
                     </div>
                     <div className='Burger' onClick={()=>{showSidePanel(!sidePanel)}}></div>
                 </div>
-                <MapComponent>
-                    {confirmDialig ? <BookingDialog showConfirmDialog={showConfirmDialog} locationData={locationData} /> : ''}
+                <MapComponent mobile>
+                    {confirmDialog ? <BookingDialog showConfirmDialog={showConfirmDialog} locationData={locationData} /> : ''}
                     <DetailCard locationData={locationData} showConfirmDialog={showConfirmDialog}/>
                 </MapComponent>
                 {sidePanel ? <BookingPanel/> : ''}
