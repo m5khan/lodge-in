@@ -1,23 +1,17 @@
 import React from 'react';
-import { Paper } from '@material-ui/core';
-import styled from 'styled-components';
+import ScrollPane from './ScrollPane';
 
-const Container = styled.div`
-    padding: 0 3px;
-    height: 100%;
 
-    .paper {
-        height: 100%;
-    }
-`;
+type Props = {
+    height: number;
+}
 
-const RightPane: React.FC = () => {
+const RightPane: React.FC<Props> = (props: Props) => {
+
     return (
-        <Container>
-            <Paper className='paper' elevation={3} square>
+        <ScrollPane height={props.height}>
             
-            </Paper>
-        </Container>
+        </ScrollPane>
     )
 }
 

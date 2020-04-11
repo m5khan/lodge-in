@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Avatar, Box, Chip, Paper, Typography, Link } from '@material-ui/core';
+import { Box, Paper, Typography, Link } from '@material-ui/core';
+import ServiceTags from './ServiceTags';
 import { LocationData } from '../../services/MapService';
+
 
 const Container = styled.div`
     padding: ${(props: cssProp) => props.pad}px;
@@ -9,10 +11,6 @@ const Container = styled.div`
         padding-top: 15px;
     }
 `
-const StyledChip = styled(Chip)`
-    margin: 2px;
-`
-
 const Image = styled.img`
     width: 100%;
 `
@@ -34,11 +32,7 @@ const PropertyDetail: React.FC<LocationData> = (props: Props) => {
                         {props.title}
                     </Typography>
                     <Image src='/images/hotel.jpg'></Image>
-                    <StyledChip avatar={<Avatar>M</Avatar>} label="Hotel" variant="outlined" size="small"/>
-                    <StyledChip avatar={<Avatar>I</Avatar>} label="Hotel" variant="outlined" size="small"/>
-                    <StyledChip avatar={<Avatar>K</Avatar>} label="Hotel" variant="outlined" size="small"/>
-                    <StyledChip avatar={<Avatar>H</Avatar>} label="Hotel" variant="outlined" size="small"/>
-                    <StyledChip avatar={<Avatar>L</Avatar>} label="Hotel" variant="outlined" size="small"/>
+                    <ServiceTags categories={props.categories}/>
                     <div className='address'>
                         <Typography  variant="body2" color="textPrimary" component="p">
                             {props.address.label}

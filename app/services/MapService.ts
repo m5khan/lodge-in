@@ -131,8 +131,8 @@ export class MapService {
         position: Position;
         access: Position[];
         distance: number;
-        categories: {[id: string]: string};
-        foodTypes: {[id: string]: string};
+        categories: {[id: string]: string}[];
+        foodTypes: {[id: string]: string}[];
         contacts?: Contact[];
         openingHours: OpeningHour[];
 

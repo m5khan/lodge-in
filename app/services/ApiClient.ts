@@ -29,7 +29,7 @@ export default class ApiClient {
         })
     }
 
-    public async getPropertyBookings(propertyId: string): Promise<void> {
+    public async getPropertyBookings(propertyId: string): Promise<any[]> {
         const res = await fetch(`/properties/${propertyId}/bookings`);
         const data = await res.json();
         return data;

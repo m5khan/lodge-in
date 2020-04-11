@@ -30,7 +30,7 @@ const WebView: React.FC = () => {
                     <Map height={maxHeight}/>
                 </Grid>
                 <Grid item xs={3}>
-                    <RightPane /> 
+                    <RightPane height={maxHeight}/> 
                 </Grid>
             </Grid>
         </Container>

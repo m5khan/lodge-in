@@ -8,6 +8,7 @@ import { RemoteService} from './remoteService';
  * https://developer.here.com/documentation/geocoding-search-api/dev_guide/topics-places/places-category-system-full.html
  */
 const hotelLodging = [
+    '500-5000-0000',    // Hotel or Motel
     '500-5100-0053',    // Hotel
     '500-5100-0054',    // Motel
     '500-5100-0055',    // Hostel
