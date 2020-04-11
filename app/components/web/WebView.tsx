@@ -13,6 +13,12 @@ import '../../styles/web.css';
 const maxHeight = window.innerHeight - 64;
 const Container = styled.div`
     max-height: ${`${ maxHeight }px`};
+    & .grid-right {
+        border-left: 1px solid #dedede;
+    }
+    & .grid-left {
+        border-right: 1px solid #dedede;
+    }
 `;
 
 
@@ -23,13 +29,13 @@ const WebView: React.FC = () => {
         <Header />
         <Container>
             <Grid container>
-                <Grid item xs={3}>
+                <Grid className='grid-left' item xs={3}>
                     <LeftPane height={maxHeight}/>
                 </Grid>
                 <Grid item xs={6}>
                     <Map height={maxHeight}/>
                 </Grid>
-                <Grid item xs={3}>
+                <Grid className='grid-right' item xs={3}>
                     <RightPane height={maxHeight}/> 
                 </Grid>
             </Grid>

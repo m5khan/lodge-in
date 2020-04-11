@@ -35,6 +35,7 @@ export class BookingController {
 
     /**
      * Middleware for validating data
+     * TODO: Do proper validation and sanitization
      * 
      * @param req 
      * @param res 

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Box, Paper, Typography, Link } from '@material-ui/core';
+import { Box, Button, Paper, Typography, Link } from '@material-ui/core';
 import ServiceTags from './ServiceTags';
 import { LocationData } from '../../services/MapService';
 
@@ -10,6 +10,12 @@ const Container = styled.div`
     .address, .open-hours, .contact {
         padding-top: 15px;
     }
+    .book-button {
+        margin: 15px 0;
+    }
+`
+const StyledButton = styled(Button)`
+    width: 100%;
 `
 const Image = styled.img`
     width: 100%;
@@ -19,9 +25,11 @@ type cssProp = {
     pad: number;
 }
 
-type Props  = { } & LocationData
+type Props  = {
+    setOpenDialog: React.Dispatch<React.SetStateAction<boolean>>
+ } & LocationData
 
-const PropertyDetail: React.FC<LocationData> = (props: Props) => {
+const PropertyDetail: React.FC<Props> = (props: Props) => {
     
     return (
         <Box display="flex" alignItems="flex-start" css={{ height: '100%' }}>
@@ -37,6 +45,12 @@ const PropertyDetail: React.FC<LocationData> = (props: Props) => {
                         <Typography  variant="body2" color="textPrimary" component="p">
                             {props.address.label}
                         </Typography>
+                    </div>
+
+                    <div className='book-button'>
+                        <StyledButton onClick={() => {props.setOpenDialog(true)}} size="large" color="primary" variant="contained">
+                            Book Online
+                        </StyledButton>
                     </div>
                     
                     {
