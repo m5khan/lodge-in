@@ -37,7 +37,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack:dev": "webpack --config webpack.config.ts --mode development --watch",
+    "build:dev": "webpack --config webpack.config.ts --mode development --watch",
     "build": "webpack --config webpack.config.ts",
     "start": "node dist/server.js"
   },

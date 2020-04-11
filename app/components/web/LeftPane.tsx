@@ -6,17 +6,33 @@ import { LocationData } from '../../services/MapService';
 import PropertyDetail from './PropertyDetail';
 
 
-const Container = styled.div`
-    height: 100%;
+const StyledPane = styled.div`
+    max-height: ${(props: Props) => `${props.height}px`};
+    overflow: auto;
+    &::-webkit-scrollbar {
+        width: 8px;
+      }
+
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+
+    &::-webkit-scrollbar-thumb {
+        background: #888;
+      }
 `;
 
-const LeftPane: React.FC = () => {
+type Props = {
+    height: number;
+}
+
+const LeftPane: React.FC<Props> = (props: Props) => {
     const locationData: LocationData|null = useContext(LocationContext).locationData;
 
     return (
-        <Container>
+        <StyledPane {...props}>
             {locationData ? <PropertyDetail {...locationData}/> : ''}
-        </Container>
+        </StyledPane>
     )
 }
 

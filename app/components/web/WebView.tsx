@@ -10,8 +10,9 @@ import RightPane from './RightPane';
 // Default css for web
 import '../../styles/web.css';
 
+const maxHeight = window.innerHeight - 64;
 const Container = styled.div`
-    max-height: ${`${window.innerHeight - 64 }px`};
+    max-height: ${`${ maxHeight }px`};
 `;
 
 
@@ -23,10 +24,10 @@ const WebView: React.FC = () => {
         <Container>
             <Grid container>
                 <Grid item xs={3}>
-                    <LeftPane />
+                    <LeftPane height={maxHeight}/>
                 </Grid>
                 <Grid item xs={6}>
-                    <Map />
+                    <Map height={maxHeight}/>
                 </Grid>
                 <Grid item xs={3}>
                     <RightPane /> 

@@ -23,7 +23,7 @@ const MobileView: React.FC = () => {
                     </div>
                     <div className='Burger' onClick={()=>{showSidePanel(!sidePanel)}}></div>
                 </div>
-                <MapComponent mobile>
+                <MapComponent height={480} mobile>
                     {confirmDialog ? <BookingDialog showConfirmDialog={showConfirmDialog} locationData={locationData} /> : ''}
                     <DetailCard locationData={locationData} showConfirmDialog={showConfirmDialog}/>
                 </MapComponent>

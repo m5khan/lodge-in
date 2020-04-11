@@ -34,13 +34,13 @@ const PropertyDetail: React.FC<LocationData> = (props: Props) => {
                         {props.title}
                     </Typography>
                     <Image src='/images/hotel.jpg'></Image>
-                    <StyledChip avatar={<Avatar>M</Avatar>} label="Hotel" variant="outlined"/>
-                    <StyledChip avatar={<Avatar>I</Avatar>} label="Hotel" variant="outlined"/>
-                    <StyledChip avatar={<Avatar>K</Avatar>} label="Hotel" variant="outlined"/>
-                    <StyledChip avatar={<Avatar>H</Avatar>} label="Hotel" variant="outlined"/>
-                    <StyledChip avatar={<Avatar>L</Avatar>} label="Hotel" variant="outlined"/>
+                    <StyledChip avatar={<Avatar>M</Avatar>} label="Hotel" variant="outlined" size="small"/>
+                    <StyledChip avatar={<Avatar>I</Avatar>} label="Hotel" variant="outlined" size="small"/>
+                    <StyledChip avatar={<Avatar>K</Avatar>} label="Hotel" variant="outlined" size="small"/>
+                    <StyledChip avatar={<Avatar>H</Avatar>} label="Hotel" variant="outlined" size="small"/>
+                    <StyledChip avatar={<Avatar>L</Avatar>} label="Hotel" variant="outlined" size="small"/>
                     <div className='address'>
-                        <Typography  variant="body2" color="textSecondary" component="p">
+                        <Typography  variant="body2" color="textPrimary" component="p">
                             {props.address.label}
                         </Typography>
                     </div>
@@ -48,11 +48,13 @@ const PropertyDetail: React.FC<LocationData> = (props: Props) => {
                     {
                     props.openingHours && props.openingHours.length ? 
                     <div className='open-hours'>
-                        {isOpen(props)}
+                        <div style={{paddingBottom: '10px'}}>
+                            {isOpen(props)}
+                        </div>
                         <Typography variant="caption" color="textPrimary" component="p">
                             Opening Hours
                         </Typography>
-                        {props.openingHours[0].text.map((hour, index) => <Typography variant="body2" key={index}>{hour}</Typography>)}
+                        {props.openingHours[0].text.map((hour, index) => <Typography variant="body2" color="textSecondary" key={index}>{hour}</Typography>)}
                     </div>
                     : ''
                     }
@@ -62,9 +64,9 @@ const PropertyDetail: React.FC<LocationData> = (props: Props) => {
                             <Typography variant="caption" color="textPrimary" component="p">
                                 Contact Information
                             </Typography>
-                            {props.contacts[0].phone ? <Typography variant="body2" >{props.contacts[0].phone[0].value}</Typography> : ''}
-                            {props.contacts[0].mobile ? <Typography variant="body2" >{props.contacts[0].mobile[0].value}</Typography> : ''}
-                            {props.contacts[0].email ? <Typography variant="body2" >{props.contacts[0].email[0].value}</Typography> : ''}
+                            {props.contacts[0].phone ? <Typography variant="body2" color="textSecondary">{props.contacts[0].phone[0].value}</Typography> : ''}
+                            {props.contacts[0].mobile ? <Typography variant="body2" color="textSecondary">{props.contacts[0].mobile[0].value}</Typography> : ''}
+                            {props.contacts[0].email ? <Typography variant="body2" color="textSecondary">{props.contacts[0].email[0].value}</Typography> : ''}
                             {props.contacts[0].www ? <Link href={props.contacts[0].www[0].value} variant="body2" target="_blank" rel="noopener">Web Page</Link> : ''}
                         </div>
                         :''
