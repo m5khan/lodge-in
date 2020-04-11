@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { LocationContext } from '../context/LocationContext';
 
 const MapContainer = styled.div`
-    width: ${(props:any) => props.mobile ? '320px' : '100%'};
-    height: 480px;
+    width: ${(props: Props) => props.mobile ? '320px' : '100%'};
+    height: ${(props: Props) => props.mobile ? '480px' : `${window.innerHeight - 64 }px`};
     position: relative;
 `;
 
@@ -14,7 +14,7 @@ const MapContainer = styled.div`
 // }
 
 type Props = {
-    mobile?: boolean;
+    mobile?: boolean | undefined;
     children?: (string | JSX.Element )[];
 }
 

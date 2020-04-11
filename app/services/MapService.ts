@@ -128,10 +128,14 @@ export class MapService {
         id: string;
         resultType: string;
         address: Address;
-        access: any;
-        distance: number;
-        categories: any;
         position: Position;
+        access: Position[];
+        distance: number;
+        categories: {[id: string]: string};
+        foodTypes: {[id: string]: string};
+        contacts?: Contact[];
+        openingHours: OpeningHour[];
+
     }
     
     interface Position {
@@ -150,6 +154,21 @@ export class MapService {
         street: string;
         postalCode: string;
         houseNumber: string;
+    }
+
+    interface Contact {
+        phone?: {label:string, value:string}[];
+        mobile?: {label:string, value:string}[];
+        tollFree?: {label:string, value:string}[];
+        fax?: {label:string, value:string}[];
+        www?: {label:string, value:string}[];
+        email?: {label:string, value:string}[];
+    }
+
+    interface OpeningHour {
+        isOpen: boolean;
+        structured: any;
+        text: string[];
     }
 
     export interface BookLocationData extends LocationData {
