@@ -7,7 +7,6 @@ import { api } from './ApiClient';
  */
 export class MapService {
     
-    private static instance: MapService;
     private platform: any;
     private hereMap: any;
     private markerIcon: any; 
@@ -21,13 +20,6 @@ export class MapService {
         });
         this.markerIcon = new H.map.Icon('/images/markericon.svg');
         this.markerIconActive = new H.map.Icon('/images/markericon_active.svg');
-    }
-    
-    static getInstance(): MapService {
-        if(!MapService.instance) {
-            MapService.instance = new MapService();
-        }
-        return MapService.instance;
     }
     
     /**
@@ -121,8 +113,8 @@ export class MapService {
          */
         public terminate () {
             this.platform = null;
-            this.hereMap = null;
             this.removeMarkerGroup(this.markerGroup);
+            this.hereMap = null;
             this.markerGroup = null;
             this.markerIcon = null;
             this.markerIconActive = null;
@@ -136,10 +128,14 @@ export class MapService {
         id: string;
         resultType: string;
         address: Address;
-        access: any;
-        distance: number;
-        categories: any;
         position: Position;
+        access: Position[];
+        distance: number;
+        categories: {[id: string]: string}[];
+        foodTypes: {[id: string]: string}[];
+        contacts?: Contact[];
+        openingHours: OpeningHour[];
+
     }
     
     interface Position {
@@ -160,7 +156,36 @@ export class MapService {
         houseNumber: string;
     }
 
+    interface Contact {
+        phone?: {label:string, value:string}[];
+        mobile?: {label:string, value:string}[];
+        tollFree?: {label:string, value:string}[];
+        fax?: {label:string, value:string}[];
+        www?: {label:string, value:string}[];
+        email?: {label:string, value:string}[];
+    }
+
+    interface OpeningHour {
+        isOpen: boolean;
+        structured: any;
+        text: string[];
+    }
+
     export interface BookLocationData extends LocationData {
-        day: string;
+        guests: number;
         time?: Date;
+    }
+
+    /**
+     * Booking data retrieved from server
+     */
+    export interface BookedData {
+        _id: string;
+        title: string;
+        id: string;
+        address: Address;
+        position: Position;
+        distance: number;
+        guests: number;
+        time : Date | string;
     }

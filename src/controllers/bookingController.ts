@@ -35,6 +35,7 @@ export class BookingController {
 
     /**
      * Middleware for validating data
+     * TODO: Do proper validation and sanitization
      * 
      * @param req 
      * @param res 
@@ -44,11 +45,11 @@ export class BookingController {
         let d: LocationData = {} as LocationData;
         try{
             assert.ok(req.body.id);
-            assert.ok(req.body.day);
+            assert.ok(req.body.guests);
             d.id = req.body.id;
             d.title = req.body.title;
-            d.day = req.body.day;
-            d.time = new Date();
+            d.guests = req.body.guests;
+            d.time = req.body.time ? new Date(req.body.time) :  new Date();
             d.position = {lat: req.body.position.lat, lng: req.body.position.lng};
             d.distance = req.body.distance;
             d.address = {
@@ -79,7 +80,7 @@ export interface LocationData {
     address: Address;
     distance: number;
     position: Position;
-    day: string;
+    guests: number;
     time: Date;
 }
 

@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
-import MapComponent from './Map';
-import BookingPanel from './BookingPanel';
+import React from 'react';
+import { Hidden } from '@material-ui/core';
+import MobileView from './mobile/MobileView';
 import LocationContextProvider from '../context/LocationContext';
+import BookingContextProvider from '../context/BookingContext';
+import WebView from './web/WebView';
 
-import '../styles/App.css';
 
 const App: React.FC = () => {
-    const [sidePanel, showSidePanel] = useState(false);
 
     return(
-        <div className='MainContainer'>
-            <div className='Header'>
-                <div className='Logo'>
-                    Lodge-In
-                </div>
-                <div className='Burger' onClick={()=>{showSidePanel(!sidePanel)}}></div>
-            </div>
-            <LocationContextProvider>
-                <MapComponent/>
-                {sidePanel ? <BookingPanel/> : ''}
-            </LocationContextProvider>
-        </div>
+       <> 
+       <LocationContextProvider>
+           <BookingContextProvider>
+                <Hidden mdUp>
+                    <MobileView />
+                </Hidden>
+                <Hidden smDown>
+                    <WebView />
+                </Hidden>
+           </BookingContextProvider>
+        </LocationContextProvider>
+        </>
         )
     }
     
