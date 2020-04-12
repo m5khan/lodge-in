@@ -175,3 +175,17 @@ export class MapService {
         guests: number;
         time?: Date;
     }
+
+    /**
+     * Booking data retrieved from server
+     */
+    export interface BookedData {
+        _id: string;
+        title: string;
+        id: string;
+        address: Address;
+        position: Position;
+        distance: number;
+        guests: number;
+        time : Date | string;
+    }

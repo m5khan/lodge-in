@@ -18,7 +18,7 @@ import {
 import { LocationContext } from '../../context/LocationContext';
 import { BookingContext } from '../../context/BookingContext';
 import { api } from '../../services/ApiClient';
-import { LocationData, BookLocationData } from '../../services/MapService';
+import { LocationData, BookLocationData, BookedData } from '../../services/MapService';
 
 type Props = {
     open: boolean;
@@ -47,12 +47,11 @@ export default function BookingDialog(props: Props): JSX.Element {
                 time: selectedDate,
                 guests: guests
             } as BookLocationData;
-            api.bookProperty(bookingData).then((id: string) => {
-                console.log(id);
+            api.bookProperty(bookingData).then((_id: string) => {
                 handleClose();
             }).then(() => {
                 return api.getPropertyBookings(locationData.id);
-            }).then((result: any[]) => {
+            }).then((result: BookedData[]) => {
                 setBookingData(result);
             })
             .catch(err => {

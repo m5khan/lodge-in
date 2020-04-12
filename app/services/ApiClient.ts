@@ -1,4 +1,4 @@
-import { LocationData, BookLocationData } from './MapService';
+import { LocationData, BookLocationData, BookedData } from './MapService';
 
 interface Response {
     items: LocationData[];
@@ -29,7 +29,7 @@ export default class ApiClient {
         })
     }
 
-    public async getPropertyBookings(propertyId: string): Promise<any[]> {
+    public async getPropertyBookings(propertyId: string): Promise<BookedData[]> {
         const res = await fetch(`/properties/${propertyId}/bookings`);
         const data = await res.json();
         return data;

@@ -49,7 +49,7 @@ export class BookingController {
             d.id = req.body.id;
             d.title = req.body.title;
             d.guests = req.body.guests;
-            d.time = new Date();
+            d.time = req.body.time ? new Date(req.body.time) :  new Date();
             d.position = {lat: req.body.position.lat, lng: req.body.position.lng};
             d.distance = req.body.distance;
             d.address = {

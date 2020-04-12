@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react';
+import { BookedData } from '../services/MapService';
 
 type ContextState = {
     bookingData: any[];
@@ -8,7 +9,7 @@ type ContextState = {
 const BookingContext = createContext({} as ContextState);
 
 const BookingContextProvider = (props: any) => {
-    const [bookingData, setBookingData] = useState<any[]>([]);
+    const [bookingData, setBookingData] = useState<BookedData[]>([]);
 
     return (
         <BookingContext.Provider value={{bookingData: bookingData, setBookingData: setBookingData}}>

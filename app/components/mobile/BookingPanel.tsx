@@ -1,18 +1,18 @@
 import React, {useContext, useEffect, useState } from 'react';
 import { LocationContext } from '../../context/LocationContext';
 import { api } from '../../services/ApiClient';
-import { BookLocationData } from '../../services/MapService';
+import { BookedData } from '../../services/MapService';
 
 import '../../styles/BookingPanel.css';
 
 const BookingPanel: React.FC = () => {
     const {locationData} = useContext(LocationContext);
-    const [bookings, setBookings] = useState([]);
+    const [bookings, setBookings] = useState<BookedData[]>([]);
     
     useEffect(() => {
         if(locationData?.id) {
             api.getPropertyBookings(locationData.id)
-            .then((bookings: any) => {
+            .then((bookings: BookedData[]) => {
                 setBookings(bookings);
             }).catch((e) => console.error(e));
         }
@@ -32,9 +32,9 @@ const BookingPanel: React.FC = () => {
     )
 }
 
-const bookingLi = (bookings: BookLocationData[]) => {
+const bookingLi = (bookings: BookedData[]) => {
     return (
-        bookings.map((item: BookLocationData, index: number) => {
+        bookings.map((item: BookedData, index: number) => {
             return (
                 <li key={index}>
                     <b>{item.guests} guests</b>

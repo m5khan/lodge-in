@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import ScrollPane from './ScrollPane';
 import { BookingContext } from '../../context/BookingContext';
-
+import Unavailable from './Unavailable';
+import BookingList from './BookingList';
 
 type Props = {
   height: number;
@@ -9,13 +10,17 @@ type Props = {
 
 const RightPane: React.FC<Props> = (props: Props) => {
   const bookingData = useContext(BookingContext).bookingData;
-
+  
   return (
-    <ScrollPane height={props.height}>
-      <p>
-        {JSON.stringify(bookingData)};
-      </p>
-    </ScrollPane>
+    <>
+    {bookingData && bookingData.length ?
+      <ScrollPane height={props.height}>
+        <BookingList bookings={bookingData}/>
+      </ScrollPane>
+      : 
+      <Unavailable />  
+    }
+    </>
     )
   }
   

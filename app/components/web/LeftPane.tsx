@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 
 import { LocationContext } from '../../context/LocationContext';
 import { BookingContext } from '../../context/BookingContext';
-import { LocationData } from '../../services/MapService';
+import { LocationData, BookedData } from '../../services/MapService';
 import { api } from '../../services/ApiClient';
 import ScrollPane from './ScrollPane';
 import PropertyDetail from './PropertyDetail';
@@ -22,7 +22,7 @@ const LeftPane: React.FC<Props> = (props: Props) => {
         let ignore = false;
         if(locationData) {
             api.getPropertyBookings(locationData.id)
-            .then((result: any[]) => {
+            .then((result: BookedData[]) => {
                 if (!ignore) {      
                     // ignore flag lets only the latest render update to set data in booking state
                     setBookingData(result);
@@ -32,7 +32,7 @@ const LeftPane: React.FC<Props> = (props: Props) => {
         }
         return () => {
             ignore = true;
-            setBookingData([]);
+            // setBookingData([]);
         }
     }, [locationData])
 
