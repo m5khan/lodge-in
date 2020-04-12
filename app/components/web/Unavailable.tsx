@@ -17,7 +17,7 @@ const Unavailable: React.FC = () => {
             <Container pad={30}>
                 <MoodBadIcon style={{fontSize: '50px', width: '100%'}} color="action"></MoodBadIcon>
                 <Typography align="center" variant="body1" gutterBottom paragraph color="textSecondary" component="p">
-                    There are no bookings available for this property.
+                    There are no bookings available for this property to show.
                 </Typography>
             </Container>
         </Box>
