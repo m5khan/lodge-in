@@ -12,20 +12,26 @@ type Props = {
     height: number;
 }
 
+
 const LeftPane: React.FC<Props> = (props: Props) => {
     const locationData: LocationData|null = useContext(LocationContext).locationData;
     const { setBookingData } = useContext(BookingContext);
     const [ openDialog, setOpenDialog ] = useState<boolean>(false);
 
     useEffect(() => {
+        let ignore = false;
         if(locationData) {
             api.getPropertyBookings(locationData.id)
             .then((result: any[]) => {
-                setBookingData(result);
+                if (!ignore) {      
+                    // ignore flag lets only the latest render update to set data in booking state
+                    setBookingData(result);
+                }
             })
             .catch(err => console.error(err));
         }
         return () => {
+            ignore = true;
             setBookingData([]);
         }
     }, [locationData])
@@ -39,5 +45,6 @@ const LeftPane: React.FC<Props> = (props: Props) => {
         </>
     )
 }
+
 
 export default LeftPane;

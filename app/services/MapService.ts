@@ -172,6 +172,6 @@ export class MapService {
     }
 
     export interface BookLocationData extends LocationData {
-        day: string;
+        guests: number;
         time?: Date;
     }

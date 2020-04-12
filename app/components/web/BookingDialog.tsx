@@ -1,5 +1,5 @@
 import 'date-fns';
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useContext } from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -15,12 +15,19 @@ import {
     KeyboardDatePicker,
   } from '@material-ui/pickers';
 
+import { LocationContext } from '../../context/LocationContext';
+import { BookingContext } from '../../context/BookingContext';
+import { api } from '../../services/ApiClient';
+import { LocationData, BookLocationData } from '../../services/MapService';
+
 type Props = {
     open: boolean;
     setOpenDialog: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function BookingDialog(props: Props): JSX.Element {
+    const locationData: LocationData|null = useContext(LocationContext).locationData;
+    const { setBookingData } = useContext(BookingContext);
 
     const [selectedDate, setSelectedDate] = React.useState<Date | null>(new Date());
     const [guests, setGuests] = React.useState<number>(1);
@@ -29,9 +36,32 @@ export default function BookingDialog(props: Props): JSX.Element {
         setSelectedDate(date);
     };
   
-    const handleClose = () => {
+    const handleClose = (): void => {
         props.setOpenDialog(false);
     };
+
+    const handleSubmit = (): void => {
+        if(locationData) {
+            const bookingData = {
+                ...locationData,
+                time: selectedDate,
+                guests: guests
+            } as BookLocationData;
+            api.bookProperty(bookingData).then((id: string) => {
+                console.log(id);
+                handleClose();
+            }).then(() => {
+                return api.getPropertyBookings(locationData.id);
+            }).then((result: any[]) => {
+                setBookingData(result);
+            })
+            .catch(err => {
+                console.error(err);
+                handleClose();
+            });
+        }
+    }
+
 
     const sliderCommit = (_e: ChangeEvent<{}>, val: number | number[])   => {
         if(val instanceof Array) {
@@ -99,7 +129,7 @@ export default function BookingDialog(props: Props): JSX.Element {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleSubmit} color="primary">
             Book
           </Button>
         </DialogActions>

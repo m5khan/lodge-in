@@ -45,10 +45,10 @@ export class BookingController {
         let d: LocationData = {} as LocationData;
         try{
             assert.ok(req.body.id);
-            assert.ok(req.body.day);
+            assert.ok(req.body.guests);
             d.id = req.body.id;
             d.title = req.body.title;
-            d.day = req.body.day;
+            d.guests = req.body.guests;
             d.time = new Date();
             d.position = {lat: req.body.position.lat, lng: req.body.position.lng};
             d.distance = req.body.distance;
@@ -80,7 +80,7 @@ export interface LocationData {
     address: Address;
     distance: number;
     position: Position;
-    day: string;
+    guests: number;
     time: Date;
 }
 

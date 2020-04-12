@@ -37,7 +37,7 @@ const bookingLi = (bookings: BookLocationData[]) => {
         bookings.map((item: BookLocationData, index: number) => {
             return (
                 <li key={index}>
-                    <b>{item.day}</b>
+                    <b>{item.guests} guests</b>
                     {item.time ?  <p>{new Date(item.time).toTimeString()}</p> : ''}
                 </li>
             )
