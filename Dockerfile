@@ -13,7 +13,7 @@ EXPOSE 8080
 
 WORKDIR /opt/lodge-in
 
-# COPY package.json /opt/snipper/package.json
+# COPY package.json /opt/lodge-in/package.json
 COPY . .
 
 RUN npm install && \
